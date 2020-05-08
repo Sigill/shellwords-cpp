@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(shellwords-cpp)
 
-set(SHELLWORDSCPP_VERSION "0.1.0")
+set(SHELLWORDSCPP_VERSION "0.2.0")
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

@@ -57,3 +57,14 @@ TEST(shellwords, shelljoin) {
   EXPECT_EQ(shelljoin({"ps", "-p", "1234"}), "ps -p 1234");
 }
 
+TEST(shellwords, shell_splitter) {
+  std::vector<std::string> suffixes;
+  const std::string cmd = "ps -p 1234";
+  shell_splitter splitter(cmd.begin(), cmd.end());
+
+  while(splitter.read_next()) {
+    suffixes.emplace_back(splitter.suffix(), cmd.end());
+  }
+
+  EXPECT_THAT(suffixes, ::testing::ElementsAre("-p 1234", "1234", ""));
+}
