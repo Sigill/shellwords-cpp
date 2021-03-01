@@ -1,6 +1,6 @@
 #include <gmock/gmock.h>
 
-#include "shellwords.hxx"
+#include "shellwords/shellwords.hxx"
 
 using namespace shellwords;
 

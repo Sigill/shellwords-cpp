@@ -1,19 +1,19 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(shellwords-cpp)
 
-set(SHELLWORDSCPP_VERSION "0.2.0")
+set(SHELLWORDSCPP_VERSION "0.2.1")
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(shellwords shellwords.cxx)
+add_library(shellwords shellwords/shellwords.cxx)
 target_include_directories(shellwords
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
            $<INSTALL_INTERFACE:include>)
 
 # Define public headers to get them automatically installed.
 set_target_properties(shellwords PROPERTIES
-    PUBLIC_HEADER shellwords.hxx)
+    PUBLIC_HEADER shellwords/shellwords.hxx)
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
