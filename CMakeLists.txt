@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(shellwords-cpp)
 
-set(SHELLWORDSCPP_VERSION "0.2.1")
+set(SHELLWORDSCPP_VERSION "0.2.2")
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,6 +16,9 @@ set_target_properties(shellwords PROPERTIES
     PUBLIC_HEADER shellwords/shellwords.hxx)
 
 include(GNUInstallDirs)
+set(CMAKE_INSTALL_CMAKEDIR "lib/cmake/shellwords" CACHE PATH "Install location for cmake related files")
+mark_as_advanced(CMAKE_INSTALL_CMAKEDIR)
+
 include(CMakePackageConfigHelpers)
 
 set(SHELLWORDS_EXPORT ShellwordsTargets)
@@ -32,7 +35,7 @@ install(TARGETS shellwords
 export(TARGETS shellwords FILE "${PROJECT_BINARY_DIR}/${SHELLWORDS_EXPORT}.cmake")
 # Create the export file for the install tree.
 install(EXPORT ${SHELLWORDS_EXPORT}
-    DESTINATION "${CMAKE_INSTALL_PREFIX}")
+    DESTINATION "${CMAKE_INSTALL_CMAKEDIR}")
 
 # The config files could be generated using a macro (see [1]), but it seems
 # to be more complex than to do it manually (see [2]).
@@ -59,7 +62,7 @@ write_basic_package_version_file(
 install(FILES
     "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/ShellwordsConfig.cmake"
     "${CMAKE_CURRENT_BINARY_DIR}/ShellwordsConfigVersion.cmake"
-    DESTINATION "${CMAKE_INSTALL_PREFIX}")
+    DESTINATION "${CMAKE_INSTALL_CMAKEDIR}")
 
 include(CTest)
 
