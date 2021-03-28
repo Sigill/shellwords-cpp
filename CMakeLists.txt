@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(shellwords-cpp)
 
-set(SHELLWORDSCPP_VERSION "0.2.2")
+set(SHELLWORDSCPP_VERSION "0.2.3")
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -43,12 +43,10 @@ install(EXPORT ${SHELLWORDS_EXPORT}
 # [2] https://gitlab.kitware.com/cmake/community/wikis/doc/tutorials/How-to-create-a-ProjectConfig.cmake-file
 
 # Create the config file for the build tree.
-set(CONF_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include")
 configure_file(ShellwordsConfig.in.cmake
     "${PROJECT_BINARY_DIR}/ShellwordsConfig.cmake" @ONLY)
 
 # Create the config file for the install tree.
-set(CONF_INCLUDE_DIRS "\${PACKAGE_CMAKE_DIR}/${CMAKE_INSTALL_INCLUDEDIR}")
 configure_file(ShellwordsConfig.in.cmake
     "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/ShellwordsConfig.cmake" @ONLY)
 
